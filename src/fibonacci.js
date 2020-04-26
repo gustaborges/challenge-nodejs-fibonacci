@@ -4,7 +4,7 @@ function fibonacci() {
 }
 
 
-function calcFibonacciUntilExceeds(number) {
+function calcFibonacciUntilExceeds(numberThreshold) {
     const sequence = [0, 1];
 
     const lastFibonacci = () => sequence[sequence.length - 1];
@@ -16,20 +16,17 @@ function calcFibonacciUntilExceeds(number) {
         nextNumber += penultimateFibonacci()
         sequence.push(nextNumber);
 
-    } while(lastFibonacci() <= number);
+    } while(lastFibonacci() <= numberThreshold);
 
     return sequence;
 }
 
 
-
-let fibonacciArray = fibonacci();
-
-module.exports = function isFibonacci(number) {
+module.exports = isFibonacci = (number) => {
     number = parseInt(Number(number));
 
     if(number === NaN)
         return false;
         
-    return fibonacciArray.includes(number);
+    return fibonacci().includes(number);
 }
